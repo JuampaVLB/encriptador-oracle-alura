@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    text-decoration: none;
+    color: #008F39;
+    height: 1rem;
+    display: inline-block;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+#main {
+    width: 100%;
+    height: calc(100vh - 3rem);
+    display: flex;
+}
+
+#main .left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#main .left .txt {
+    width: 90%;
+    height: 70%;
+    background: purple;
+}
+
+#main .left .txt>textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    padding-left: 3rem;
+}
+
+#main .left #buttons {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#main .left #buttons>button {
+    padding: 15px 120px;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #008F39;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+#main .left #buttons>button:nth-child(1) {
+    background-color: #008F39;
+    color: #fff;
+}
+
+#main .left #buttons>button:nth-child(2) {
+    color: #008F39;
+    background-color: #fff;
+}
+
+#main .left #buttons>button:hover {
+    opacity: .5;
+}
+
+#main .right {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main .right .stack {
+    width: 90%;
+    height: 90%;
+    border: 2px solid #008F39;
+}
+
+#main .right .stack > p {
+    text-align: left;
+    margin: 2rem;
+    font-size: 2rem;
+}
