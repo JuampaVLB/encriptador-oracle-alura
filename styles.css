@@ -5,9 +5,10 @@
 }
 
 .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
     text-decoration: none;
     color: #008F39;
-    height: 1rem;
     display: inline-block;
     font-weight: bold;
     margin: 1rem;
@@ -17,6 +18,7 @@
     width: 100%;
     height: calc(100vh - 3rem);
     display: flex;
+    
 }
 
 #main .left {
@@ -76,18 +78,87 @@
 #main .right {
     width: 30%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 }
 
 #main .right .stack {
     width: 90%;
-    height: 90%;
+    height: 70%;
     border: 2px solid #008F39;
+}
+
+#main .right #copiar {
+    padding: 15px 120px;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #008F39;
+    background-color: #008F39;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s ease;
 }
 
 #main .right .stack > p {
     text-align: left;
     margin: 2rem;
     font-size: 2rem;
+}
+
+/* Responsive */
+
+@media ( max-width: 1000px ) {
+
+    .logo {
+        display: block;
+        text-align: center;
+    }
+
+    #main {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #main .left {
+        width: 100%;
+        height: 70%;
+    }
+
+    #main .right {
+        width: 100%;
+        height: 30%;
+    }
+}
+
+@media ( max-width: 680px ) { 
+
+    #main {
+        height: auto;
+    }
+
+    #main .left #buttons {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #main .left {
+        min-height: 400px;
+    }
+
+    #main .right {
+        margin-top: 2rem;
+        min-height: 400px;
+    }
+
+    #main .right .stack{
+        min-height: 400px;
+    }
+
+    #main .right #copiar {
+        width: 90%;
+        margin: 2rem 0;
+    }
 }

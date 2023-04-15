@@ -1,74 +1,91 @@
-'use strict';
+"use strict";
 
-var response = '';
+var response = "";
 var separator;
 
 // DOM
 
-const encriptar = document.querySelector('#encriptar');
-const desencriptar = document.querySelector('#desencriptar');
-const stack = document.querySelector('.stack');
-const txt = document.querySelector('#txt');
+const encriptar = document.querySelector("#encriptar");
+const desencriptar = document.querySelector("#desencriptar");
+const copiar = document.querySelector("#copiar");
+const stack = document.querySelector(".stack");
+const txt = document.querySelector("#txt");
 
 // Arrays
 
-const words = ['e', 'i', 'a', 'o', 'u'];
-const secret = ['enter', 'imes', 'ai', 'ober', 'ufat'];
+const letters = ["e", "i", "a", "o", "u"];
+const secret = ["enter", "imes", "ai", "ober", "ufat"];
 
 // Stack
 
 const addStack = (str) => {
-    
-    let p = document.createElement("p");
-    let text = document.createTextNode(str);
+  console.log(stack.childNodes.length);
+  if (stack.childNodes.length > 1) {
+    stack.removeChild(stack.firstElementChild);
+  }
 
-    p.appendChild(text);
+  response = "";
 
-    stack.appendChild(p);
-}
+  txt.value = "";
+
+  let p = document.createElement("p");
+
+  let text = document.createTextNode(str);
+
+  p.appendChild(text);
+
+  stack.append(p);
+};
+
 // Desencriptar
 
-desencriptar.addEventListener('click', () => {
-    let value = txt.value;
+desencriptar.addEventListener("click", () => {
+  let value = txt.value;
 
-    let i = 0;
+  let i = 0;
 
-    secret.forEach(str => {
-        separator = value.search(str);
-        
-        if(separator !== -1) {
-            console.log(separator);
-        }
-    
-    });
+  response = value
+    .replaceAll(secret[0], letters[0])
+    .replaceAll(secret[1], letters[1])
+    .replaceAll(secret[2], letters[2])
+    .replaceAll(secret[3], letters[3])
+    .replaceAll(secret[4], letters[4]);
 
-
-})
+  return addStack(response);
+});
 
 // Encriptar
 
-encriptar.addEventListener('click', () => {
-    let value = txt.value.split('');
+encriptar.addEventListener("click", () => {
+  let value = txt.value.split("");
 
-    let i = 0;
+  let i = 0;
 
-    value.forEach(word => {
-      words.forEach((wordCompare, index) => {
-        if(word === wordCompare) {
-            response+=secret[index];
-        } 
-      });
-
-      if(word !== 'a' && word !== 'e' && word !== 'i' && word !== 'o' && word !== 'u') {
-        response+=word;
+  value.forEach((letter) => {
+    letters.forEach((wordCompare, index) => {
+      if (letter === wordCompare) {
+        response += secret[index];
       }
-
     });
 
-    addStack(response);
+    if (
+      letter !== "a" &&
+      letter !== "e" &&
+      letter !== "i" &&
+      letter !== "o" &&
+      letter !== "u"
+    ) {
+      response += letter;
+    }
+  });
 
-    response = '';
+  return addStack(response);
+});
 
-    txt.value = '';
+// Copiar 
 
+copiar.addEventListener('click', () => {
+  let p = document.querySelector('p');
+  // p.select();
+  document.execCommand('copy');
 })
