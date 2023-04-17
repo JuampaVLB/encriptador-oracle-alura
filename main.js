@@ -21,6 +21,7 @@ const secret = ["enter", "imes", "ai", "ober", "ufat"];
 const addStack = (str) => {
   console.log(stack.childNodes.length);
   if (stack.childNodes.length > 1) {
+    copiar.textContent = 'Copiar';
     stack.removeChild(stack.firstElementChild);
   }
 
@@ -85,7 +86,15 @@ encriptar.addEventListener("click", () => {
 // Copiar 
 
 copiar.addEventListener('click', () => {
+
   let p = document.querySelector('p');
-  // p.select();
-  document.execCommand('copy');
+
+  if(p != null) {
+
+  navigator.clipboard.writeText(p.textContent);
+
+  copiar.textContent = 'Copiado';
+
+  }
+
 })
